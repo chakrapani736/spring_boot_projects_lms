@@ -1,0 +1,9 @@
+package com.te.lms.swaggerconfig;
+
+public class SwaggerConfig {
+
+	public SwaggerConfig() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Success</title>
+	<link rel="shortcut icon" href="https://cdn.pixabay.com/photo/2015/10/23/11/09/download-1002802_1280.jpg" type="image/x-icon">
+	<style>
+		#video-container {
+			position: absolute;
+			top: 50px;
+			left: 230px;
+			width: 70%;
+			height: 70%;
+			overflow: hidden;
+		}
+
+		a:hover {
+			background-color: green;
+			border-radius: 10px;
+			color: yellow;
+		}
+
+		/* Set the video to be full-width and auto height */
+		video {
+			width: 100%;
+			height: auto;
+		}
+
+		a {
+			text-decoration: none;
+		}
+
+		.transparent {
+			text-decoration: none;
+			position: absolute;
+			top: 480pt;
+			left: 470pt;
+			background: transparent;
+			border: 2px solid orange;
+			font-size: 35px;
+			font-weight: bold;
+			border-radius: 10px;
+		}
+
+		.transparent-textfield {
+			background: transparent;
+			border: 2px solid orange;
+			font-size: 20px;
+			font-weight: bold;
+			border-radius: 10px;
+			margin-right: 5px;
+		}
+	</style>
+</head>
+
+<body>
+	<nav>
+		<span><button class="transparent-textfield"><a href="./">Home</a></button></span>
+		<span><button class="transparent-textfield"><a href="#">About</a></button></span>
+		<span><button class="transparent-textfield"><a href="#">Services</a></button></span>
+		<span><button class="transparent-textfield"><a href="#">Contact Us</a></button></span>
+		<span><button class="transparent-textfield"><a href="./register">Sign Up</a></button></span>
+		<span><button class="transparent-textfield"><a href="./signin">Login</a></button></span><span>
+	</nav>
+	
+	<div id="video-container">
+		<video autoplay loop muted>
+			<source
+				src=" https://www.shutterstock.com/shutterstock/videos/1071008191/preview/stock-footage-modern-green-check-mark-icon-animation-on-a-white-background-success-correct-or-right-choice-icon.webm">
+		</video>
+	</div>
+
+</body>
+
+</html>

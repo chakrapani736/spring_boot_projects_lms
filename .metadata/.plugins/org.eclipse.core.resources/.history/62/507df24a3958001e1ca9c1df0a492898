@@ -1,0 +1,31 @@
+package com.te.lms.exception;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+
+@ControllerAdvice
+public class LmsGlobalException {
+
+	@ExceptionHandler(ApprovalException.class)
+	public ResponseEntity<String> getApprovalException(ApprovalException e) {
+		return ResponseEntity.status(HttpStatus.BAD_GATEWAY).body(e.getMessage());
+	}
+	@ExceptionHandler(EmployeeNotFoundException.class)
+	public ResponseEntity<String> getEmployeeNotFoundException(EmployeeNotFoundException e) {
+		return ResponseEntity.status(HttpStatus.BAD_GATEWAY).body(e.getMessage());
+	}
+	@ExceptionHandler(MentorNotFoundException.class)
+	public ResponseEntity<String> getMentorNotFoundException(MentorNotFoundException e) {
+		return ResponseEntity.status(HttpStatus.BAD_GATEWAY).body(e.getMessage());
+	}
+	@ExceptionHandler(BatchNotFoundException.class)
+	public ResponseEntity<String> getBatchNotFoundException(BatchNotFoundException e) {
+		return ResponseEntity.status(HttpStatus.BAD_GATEWAY).body(e.getMessage());
+	}
+	@ExceptionHandler(MockNotFoundException.class)
+	public ResponseEntity<String> getMockNotFoundException(MockNotFoundException e) {
+		return ResponseEntity.status(HttpStatus.BAD_GATEWAY).body(e.getMessage());
+	}
+}

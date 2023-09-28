@@ -1,0 +1,8 @@
+
+g
+java:S1128
+";Remove this unused import 'jakarta.persistence.JoinColumn'.(ÝçÆ•Hƒ;RMINORZ
+CODE_SMELL
+f
+java:S1128":Remove this unused import 'jakarta.persistence.JoinTable'.(‡óÑ÷H…;RMINORZ
+CODE_SMELL

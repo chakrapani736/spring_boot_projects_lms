@@ -1,0 +1,17 @@
+INDEX VERSION 1.132
+D:\hp\mock\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3319395455.index
+\springwithoutsecurity\src\main\java
+D:\hp\mock\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3262509385.index
+\springwithoutsecurity\src\main\resources
+D:\hp\mock\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\463025231.index
+\spring-login-and-authentication\src\main\java
+D:\hp\mock\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3155417356.index
+\spring-login-and-authentication\src\main\java
+D:\hp\mock\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1483821282.index
+\spring-security-test\src\main\java
+D:\hp\mock\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3268826466.index
+\springwithdefaultsecurity\src\main\java
+D:\hp\mock\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\537319082.index
+\springwithuserdefinedsecurity\src\main\java
+D:\hp\mock\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2934917775.index
+\springwithsecurity\src\main\java

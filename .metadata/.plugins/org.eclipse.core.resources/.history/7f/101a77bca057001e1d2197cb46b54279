@@ -1,0 +1,291 @@
+package com.te.lms.controller;
+
+import java.util.Arrays;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.te.lms.dto.BatchDetailsDTO;
+import com.te.lms.dto.EmployeePrimaryInfoDTO;
+import com.te.lms.dto.EmployeeRequestedDTO;
+import com.te.lms.dto.MailRejectionDTO;
+import com.te.lms.dto.MentorDetailsDTO;
+import com.te.lms.dto.MockDetailsDTO;
+import com.te.lms.dto.MockRatingDTO;
+import com.te.lms.entity.BatchDetails;
+import com.te.lms.entity.EmployeePrimaryInfo;
+import com.te.lms.exception.EmployeeNotFoundException;
+import com.te.lms.exception.MentorNotFoundException;
+import com.te.lms.responce.LmsResponse;
+import com.te.lms.service.LmsService;
+
+import jakarta.mail.MessagingException;
+
+@RestController
+public class LMSController {
+
+	@Autowired
+	private LmsService lmsService;
+
+	@Autowired
+	private LmsResponse response;
+
+	// Employee_Controller Details
+
+	// URL for sending employee data to Admin
+
+	@PostMapping("/employeeApply")
+	public ResponseEntity<LmsResponse> addEmployee(@RequestBody EmployeePrimaryInfoDTO primaryInfoDTO)
+			throws EmployeeNotFoundException {
+		EmployeePrimaryInfoDTO infoDTO = lmsService.addEmployeeInfo(primaryInfoDTO);
+		response.setError(false);
+		response.setStatus(200);
+		response.setMessage("Data added Succesfully..!");
+		response.setLmsList(Arrays.asList(infoDTO));
+		return new ResponseEntity<LmsResponse>(response, HttpStatus.OK);
+	}
+
+	// Admin_Controller Details
+
+	// Approval and Rejection
+
+	// URL for updating details of an employee after approval
+
+	@PutMapping("approve/{id}")
+	public ResponseEntity<LmsResponse> approveEmployee(@PathVariable("id") int employeeNo,
+			@RequestBody EmployeePrimaryInfoDTO primaryInfoDTO) throws EmployeeNotFoundException, MessagingException {
+		EmployeePrimaryInfoDTO infoDTO = lmsService.approveById(employeeNo, primaryInfoDTO);
+		response.setError(false);
+		response.setStatus(200);
+		response.setMessage("Data updated Succesfully after approval..!");
+		response.setLmsList(Arrays.asList(infoDTO));
+		return new ResponseEntity<LmsResponse>(response, HttpStatus.OK);
+	}
+
+	// URL for giving reason for rejecting employee
+
+	@PutMapping("rejectEmployee/{id}")
+	public ResponseEntity<LmsResponse> rejectEmployee(@PathVariable("id") int id,
+			@RequestBody MailRejectionDTO rejectionDTO) throws MessagingException,EmployeeNotFoundException {
+		MailRejectionDTO infoDTO = lmsService.rejectEmployee(id, rejectionDTO);
+		response.setError(false);
+		response.setStatus(200);
+		response.setMessage("Rejected ..!");
+		response.setLmsList(Arrays.asList(infoDTO));
+		return new ResponseEntity<LmsResponse>(response, HttpStatus.OK);
+
+	}
+
+	// URL for getting all employee data who is not declared his status by Admin
+
+	@GetMapping("/getRequestedEmployee")
+	public ResponseEntity<LmsResponse> getAllRequestedEmployee() throws EmployeeNotFoundException {
+		List<EmployeeRequestedDTO> employeeList = lmsService.getAllRequestedEmployeeData();
+		response.setError(false);
+		response.setStatus(200);
+		response.setMessage("Data fetched Succesfully..!");
+		response.setLmsList(Arrays.asList(employeeList));
+		return new ResponseEntity<LmsResponse>(response, HttpStatus.OK);
+	}
+
+	// Getting All Employee Data By Admin
+	@GetMapping("/getAllEmployee")
+	public ResponseEntity<LmsResponse> getAllEmployee() throws EmployeeNotFoundException {
+		List<EmployeePrimaryInfoDTO> employeeList = lmsService.getAllEmployeeData();
+		response.setError(false);
+		response.setStatus(200);
+		response.setMessage("Data fetched Succesfully..!");
+		response.setLmsList(Arrays.asList(employeeList));
+		return new ResponseEntity<LmsResponse>(response, HttpStatus.OK);
+	}
+
+	// URL for deleting employee by Admin
+
+	@DeleteMapping("deleteEmployeeById/{id}")
+	public ResponseEntity<LmsResponse> deleteEmployee(@PathVariable("id") int employeeId) throws EmployeeNotFoundException{
+		EmployeePrimaryInfoDTO infoDTO = lmsService.deleteByID(employeeId);
+		response.setError(false);
+		response.setStatus(200);
+		response.setMessage("Data Deleted Succesfully..!");
+		response.setLmsList(Arrays.asList(infoDTO));
+		return new ResponseEntity<LmsResponse>(response, HttpStatus.OK);
+	}
+
+	// adding mentor details by Admin
+	
+	@PostMapping("/addMentors")
+	public ResponseEntity<LmsResponse> addMentors(@RequestBody MentorDetailsDTO mentorDetailsDTO)
+			throws MessagingException ,MentorNotFoundException{
+		MentorDetailsDTO infoDTO = lmsService.addMentors(mentorDetailsDTO);
+		response.setError(false);
+		response.setStatus(200);
+		response.setMessage("Data added Succesfully..!");
+		response.setLmsList(Arrays.asList(infoDTO));
+		return new ResponseEntity<LmsResponse>(response, HttpStatus.OK);
+	}
+
+	// URL for getting all mentor details by Admin
+
+	@GetMapping("/admin/getMentors")
+	public ResponseEntity<LmsResponse> getAllMentor() throws MentorNotFoundException {
+		List<MentorDetailsDTO> mentor = lmsService.getAllMentorDetail();
+		response.setError(false);
+		response.setStatus(200);
+		response.setMessage("Data fetched Succesfully..!");
+		response.setLmsList(Arrays.asList(mentor));
+		return new ResponseEntity<LmsResponse>(response, HttpStatus.OK);
+	}
+	// URL for modifying mentor details by Admin
+
+	@PutMapping("/admin/modifyMentor/{id}")
+	public ResponseEntity<LmsResponse> modifyMentorDetails(@PathVariable("id") int mentorNo,
+			@RequestBody MentorDetailsDTO mentorDetailsDTO) {
+		MentorDetailsDTO infoDTO = lmsService.updateMentorDetails(mentorNo, mentorDetailsDTO);
+		response.setError(false);
+		response.setStatus(200);
+		response.setMessage("Data Modified Succesfully..!");
+		response.setLmsList(Arrays.asList(infoDTO));
+		return new ResponseEntity<LmsResponse>(response, HttpStatus.OK);
+	}
+
+	// URL for deleting mentor by Admin by his Id
+	@DeleteMapping("/admin/deleteMentor/{id}")
+	public ResponseEntity<LmsResponse> deleteMentor(@PathVariable("id") int mentorId) {
+		MentorDetailsDTO infoDTO = lmsService.deleteMentorByID(mentorId);
+		response.setError(false);
+		response.setStatus(200);
+		response.setMessage("Data Deleted Succesfully..!");
+		response.setLmsList(Arrays.asList(infoDTO));
+		return new ResponseEntity<LmsResponse>(response, HttpStatus.OK);
+	}
+
+	// Batch Operations
+
+	// URL for adding Batch Details By Admin
+
+	@PostMapping("/admin/addbatch")
+	public ResponseEntity<LmsResponse> addBatches(@RequestBody BatchDetailsDTO batchDetailsDTO) {
+		BatchDetails infoDTO = lmsService.addBatches(batchDetailsDTO);
+		response.setError(false);
+		response.setStatus(200);
+		response.setMessage("Data added Succesfully..!");
+		response.setLmsList(Arrays.asList(infoDTO));
+		return new ResponseEntity<LmsResponse>(response, HttpStatus.OK);
+	}
+	// URL for fetching employees of a batch by batchId
+
+	@GetMapping("/admin/getBatchEmolyees/{id}")
+	public ResponseEntity<LmsResponse> getEmployeeByBatchId(@PathVariable("id") int id) {
+		List<EmployeePrimaryInfoDTO> infoDTO = lmsService.getEmployeeByBatchId(id);
+		response.setError(false);
+		response.setStatus(200);
+		response.setMessage("Data added Succesfully..!");
+		response.setLmsList(Arrays.asList(infoDTO));
+		return new ResponseEntity<LmsResponse>(response, HttpStatus.OK);
+	}
+	// URL for fetching all Batch Details
+
+	@GetMapping("/admin/getBatches")
+	public ResponseEntity<LmsResponse> getAllBatches() {
+		List<BatchDetailsDTO> batch = lmsService.getAllBatchDetail();
+		response.setError(false);
+		response.setStatus(200);
+		response.setMessage("Data fetched Succesfully..!");
+		response.setLmsList(Arrays.asList(batch));
+		return new ResponseEntity<LmsResponse>(response, HttpStatus.OK);
+	}
+
+	// URL for modifying Batch Details By Id through Admin
+
+	@PutMapping("/admin/modifyBatch/{id}")
+	public ResponseEntity<LmsResponse> modifyBatchDetails(@PathVariable("id") int batchNo,
+			@RequestBody BatchDetailsDTO batchDetailsDTO) {
+		BatchDetailsDTO batch = lmsService.updateBatchDetail(batchNo, batchDetailsDTO);
+		response.setError(false);
+		response.setStatus(200);
+		response.setMessage("Data Modified Succesfully..!");
+		response.setLmsList(Arrays.asList(batch));
+		return new ResponseEntity<LmsResponse>(response, HttpStatus.OK);
+	}
+
+	// URL for deleting Batch By Id Through Admin
+
+	@DeleteMapping("/admin/deleteBatch/{id}")
+	public ResponseEntity<LmsResponse> deleteBatch(@PathVariable("id") int batchId) {
+		BatchDetailsDTO infoDTO = lmsService.deleteBatchByID(batchId);
+		response.setError(false);
+		response.setStatus(200);
+		response.setMessage("Data Deleted Succesfully..!");
+		response.setLmsList(Arrays.asList(infoDTO));
+		return new ResponseEntity<LmsResponse>(response, HttpStatus.OK);
+	}
+
+	// Mentor_Cntroller Details
+
+	// URL to create mock by Mentor
+	@PostMapping("/mentor/createMock")
+	public ResponseEntity<LmsResponse> addMockInfo(@RequestBody MockDetailsDTO mockDetailsDTO) {
+		MockDetailsDTO infoDTO = lmsService.addMockInformation(mockDetailsDTO);
+		response.setError(false);
+		response.setStatus(200);
+		response.setMessage("Data added Succesfully..!");
+		response.setLmsList(Arrays.asList(infoDTO));
+		return new ResponseEntity<LmsResponse>(response, HttpStatus.OK);
+	}
+
+	// URL for giving Mock Ratings
+	@PostMapping("/mentor/giveRating")
+	public ResponseEntity<LmsResponse> giveMockRatings(@RequestBody MockRatingDTO mockRatingDTO) {
+		MockRatingDTO infoDTO = lmsService.giveRatings(mockRatingDTO);
+		response.setError(false);
+		response.setStatus(200);
+		response.setMessage("Data added Succesfully..!");
+		response.setLmsList(Arrays.asList(infoDTO));
+		return new ResponseEntity<LmsResponse>(response, HttpStatus.OK);
+	}
+
+	// * UnAuthenticated Employee *
+	// URL for fetching employee data by id
+
+	@GetMapping("/getProfile/{id}")
+	public ResponseEntity<LmsResponse> getEmployeeProfileDetails(@PathVariable("id") int id) {
+		EmployeePrimaryInfoDTO infoDTO = lmsService.getEmployeeByUserId(id);
+		response.setError(false);
+		response.setStatus(200);
+		response.setMessage("Data fetched Succesfully..!");
+		response.setLmsList(Arrays.asList(infoDTO));
+		return new ResponseEntity<LmsResponse>(response, HttpStatus.OK);
+	}
+
+	// URL for Setting password by employee
+
+	@PutMapping("/resetPasswordEmployee")
+	public ResponseEntity<LmsResponse> resetPassword(@RequestBody EmployeePrimaryInfoDTO primaryInfoDTO) {
+		EmployeePrimaryInfoDTO infoDTO = lmsService.resetPassword(primaryInfoDTO);
+		response.setError(false);
+		response.setStatus(200);
+		response.setMessage("Password Changed");
+		response.setLmsList(Arrays.asList(infoDTO));
+		return new ResponseEntity<LmsResponse>(response, HttpStatus.ACCEPTED);
+	}
+	// URL for Setting Password By Mentor
+
+	@PutMapping("/resetPasswordMentor")
+	public ResponseEntity<LmsResponse> resetMentorPassword(@RequestBody MentorDetailsDTO mentorDetailsDTO) {
+		MentorDetailsDTO infoDTO = lmsService.resetMentorPassword(mentorDetailsDTO);
+		response.setError(false);
+		response.setStatus(200);
+		response.setMessage("Password Changed");
+		response.setLmsList(Arrays.asList(infoDTO));
+		return new ResponseEntity<LmsResponse>(response, HttpStatus.ACCEPTED);
+	}
+}

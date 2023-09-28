@@ -1,0 +1,8 @@
+
+Ž
+java:S3305"ZInject this field value directly into "securityFilterChain", the only method that uses it.(£‘¦›üÿÿÿÿH×9RCRITICALZ
+CODE_SMELL
+g	java:S1257"<This block of commented-out lines of code should be removed.(Ç˜„çHØ9RMAJORZ
+CODE_SMELL
+l
+java:S6437*"6Revoke and change this password, as it is compromised.(¿Ñ†ûÿÿÿÿHÙ9RBLOCKERZVULNERABILITY

@@ -1,0 +1,68 @@
+package com.te.lms.service;
+
+import java.security.Principal;
+import java.util.List;
+
+import com.te.lms.dto.BatchDetailsDTO;
+import com.te.lms.dto.EmployeePrimaryInfoDTO;
+import com.te.lms.dto.EmployeeRequestedDTO;
+import com.te.lms.dto.MailRejectionDTO;
+import com.te.lms.dto.MentorDetailsDTO;
+import com.te.lms.dto.MockDetailsDTO;
+import com.te.lms.dto.MockRatingDTO;
+import com.te.lms.entity.BatchDetails;
+import com.te.lms.entity.EmployeePrimaryInfo;
+import com.te.lms.entity.MentorDetails;
+import com.te.lms.exception.EmployeeNotFoundException;
+import com.te.lms.exception.MentorNotFoundException;
+
+import jakarta.mail.MessagingException;
+import jakarta.servlet.http.HttpServletRequest;
+
+public interface LmsService {
+
+	EmployeePrimaryInfoDTO addEmployeeInfo(EmployeePrimaryInfoDTO primaryInfoDTO) throws  EmployeeNotFoundException;
+
+	EmployeePrimaryInfoDTO approveById(int employeeNo, EmployeePrimaryInfoDTO primaryInfoDTO) throws EmployeeNotFoundException,MessagingException;
+
+	MailRejectionDTO rejectEmployee(int id, MailRejectionDTO rejectionDTO) throws MessagingException,EmployeeNotFoundException;
+
+	List<EmployeeRequestedDTO> getAllRequestedEmployeeData()throws EmployeeNotFoundException;
+
+	List<EmployeePrimaryInfoDTO> getAllEmployeeData()throws EmployeeNotFoundException ;
+	
+	EmployeePrimaryInfoDTO deleteByID(int employeeId)throws EmployeeNotFoundException;
+	
+	MentorDetailsDTO addMentors(MentorDetailsDTO mentorDetailsDTO) throws MessagingException,MentorNotFoundException;
+
+	List<MentorDetailsDTO> getAllMentorDetail()throws MentorNotFoundException ;
+
+	List<BatchDetailsDTO> getAllBatchDetail();
+
+	BatchDetails addBatches(BatchDetailsDTO batchDetailsDTO);
+
+	MockDetailsDTO addMockInformation(MockDetailsDTO mockDetailsDTO);
+
+	MockRatingDTO giveRatings(MockRatingDTO mockRatingDTO);
+
+	EmployeePrimaryInfoDTO getEmployeeByUserId(int id);
+
+	List<EmployeeRequestedDTO> getAllApprovedEmployeeData();
+
+	MentorDetailsDTO deleteMentorByID(int mentorId);
+	
+	EmployeePrimaryInfoDTO resetPassword(EmployeePrimaryInfoDTO primaryInfoDTO);
+
+	BatchDetailsDTO deleteBatchByID(int batchId);
+
+	MentorDetailsDTO updateMentorDetails(int mentorNo, MentorDetailsDTO mentorDetailsDTO);
+
+	BatchDetailsDTO updateBatchDetail(int batchNo, BatchDetailsDTO batchDetailsDTO);
+
+	MentorDetailsDTO resetMentorPassword(MentorDetailsDTO mentorDetailsDTO);
+
+	EmployeePrimaryInfoDTO getEmployeeByUserName(Principal principal);
+
+	List<EmployeePrimaryInfoDTO> getEmployeeByBatchId(int id);
+
+}

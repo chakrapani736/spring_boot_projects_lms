@@ -1,0 +1,11 @@
+
+\
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±ÄøÿÿÿÿH‡;RMINORZ
+CODE_SMELL
+t
+java:S1128"<Remove this unused import 'jakarta.persistence.CascadeType'.(ÃÃÊŠúÿÿÿÿ8Ííø«­1HßBRMINORZ
+CODE_SMELL
+r
+java:S1128
+":Remove this unused import 'jakarta.persistence.ManyToOne'.(áîÖãùÿÿÿÿ8Ííø«­1HáBRMINORZ
+CODE_SMELL

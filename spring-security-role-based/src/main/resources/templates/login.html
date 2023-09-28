@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Login</title>
+	<link rel="shortcut icon"
+		href="https://t3.ftcdn.net/jpg/02/97/16/60/240_F_297166066_UTGdzB4u2syIVioVqmj6qcyoXSdocgjw.jpg"
+		type="image/x-icon">
+
+	<style>
+		a:hover {
+			background-color: green;
+			border-radius: 10px;
+			color: yellow;
+		}
+
+		a {
+			text-decoration: none;
+			color: white;
+		}
+
+		.transparent {
+			color: white;
+			background: transparent;
+			border: 2px solid orange;
+			font-size: 20px;
+			font-weight: bold;
+			border-radius: 10px;
+			margin-right: 5px;
+			padding: 10px;
+
+		}
+
+		.table {
+			position: absolute;
+			top: 250px;
+			left: 100px;
+			padding: 10px;
+
+		}
+
+		.transparent-textfield {
+			background: transparent;
+			border: 2px solid orange;
+			font-size: 20px;
+			font-weight: bold;
+			border-radius: 10px;
+			margin-right: 5px;
+		}
+	</style>
+
+</head>
+
+<body
+	style="background-image: url('https://as1.ftcdn.net/v2/jpg/03/99/24/82/1000_F_399248286_Ogm0T8CFeauN4Hdn42FqWfsCE02dJBbX.jpg');background-size: cover;background-attachment: fixed;background-repeat: no-repeat;">
+	<nav>
+		<span><button class="transparent-textfield"><a href="./">Home</a></button></span>
+		<span><button class="transparent-textfield"><a href="#">About</a></button></span>
+		<span><button class="transparent-textfield"><a href="#">Services</a></button></span>
+		<span><button class="transparent-textfield"><a href="#">Contact Us</a></button></span>
+		<span><button class="transparent-textfield"><a href="./register">Sign Up</a></button></span>
+		<span><button class="transparent-textfield"><a href="./signin">Login</a></button></span><span>
+	</nav>
+
+	<div class="table">
+		<fieldset style="border:5px solid red; border-radius: 10px;">
+			<form action="./login" method="post">
+				<table style="font-size: 20px;padding: 30px;">
+					<tr>
+						<td>
+							<select style="width: 290px;" class="transparent" id="userRole" name="userRole"
+								placeholder="Select">
+								<option style="color: rgba(153, 155, 155, 0.973);" value="">Select</option>
+								<option style="color: darkturquoise;" value="user">User</option>
+								<option style="color: darkturquoise;" value="admin">Admin</option>
+							</select>
+						</td>
+					</tr>
+
+					<tr>
+						<td><input type="text" class="transparent" name="username" placeholder="Enter Your userName">
+						</td>
+					</tr>
+
+					<tr>
+						<td><input type="password" class="transparent" name="password" id="password"
+								placeholder="Password"></td>
+					</tr><br><br>
+					<tr>
+						<td style="height: 20px;"></td>
+					</tr>
+					<tr>
+						<td style="display: flex; justify-content: center;"><input
+								style=" color: green; font-weight: bold; width: 150px;" type="submit"
+								class="transparent" value="LOGIN"></td>
+					</tr>
+				</table>
+			</form>
+		</fieldset>
+	</div>
+
+
+</body>
+
+</html>

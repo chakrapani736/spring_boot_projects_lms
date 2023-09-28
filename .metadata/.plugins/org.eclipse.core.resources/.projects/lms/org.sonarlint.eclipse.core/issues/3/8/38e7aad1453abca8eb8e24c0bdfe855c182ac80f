@@ -1,0 +1,16 @@
+
+k
+java:S1128":Remove this unused import 'jakarta.persistence.ManyToOne'.(áîÖãùÿÿÿÿH–:RMINORZ
+CODE_SMELL
+e
+java:S1128"9Remove this unused import 'jakarta.persistence.EnumType'.(…÷ÍàHš:RMINORZ
+CODE_SMELL
+l
+java:S1128	";Remove this unused import 'jakarta.persistence.Enumerated'.(àèòùÿÿÿÿHœ:RMINORZ
+CODE_SMELL
+g
+java:S1128";Remove this unused import 'jakarta.persistence.ManyToMany'.(¦“ÆìH˜:RMINORZ
+CODE_SMELL
+f
+java:S1128":Remove this unused import 'jakarta.persistence.JoinTable'.(‡óÑ÷H”:RMINORZ
+CODE_SMELL

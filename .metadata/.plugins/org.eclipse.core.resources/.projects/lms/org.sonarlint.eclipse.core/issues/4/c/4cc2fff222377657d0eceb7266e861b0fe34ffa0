@@ -1,0 +1,31 @@
+
+u
+java:S2583È"CChange this condition so that it does not always evaluate to "true"(ï˜¸Ÿûÿÿÿÿ8¹Àßª­1HÍ>RMAJORZBUG
+i
+java:S2583Á"CChange this condition so that it does not always evaluate to "true"(óó²¹HÂ;RMAJORZBUG
+‰	java:S117Ì"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(†¤¯¨øÿÿÿÿ8¹Àßª­1HÌ>RMINORZ
+CODE_SMELL
+i
+java:S3655˜"7Call "Optional#isPresent()" before accessing the value.(§µÍùÿÿÿÿ8›£×ª­1H°>RMAJORZBUG
+‚	java:S117¦"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‚§ÒöÿÿÿÿÿH¬;RMINORZ
+CODE_SMELL
+]
+java:S3655—"7Call "Optional#isPresent()" before accessing the value.(àîÃ²H°;RMAJORZBUG
+i
+java:S2583"CChange this condition so that it does not always evaluate to "true"(áìä¨H²;RMAJORZBUG
+n
+java:S2583ã"CChange this condition so that it does not always evaluate to "true"(Ö¾Ï¤øÿÿÿÿH¾;RMAJORZBUG
+u
+java:S2583¢"CChange this condition so that it does not always evaluate to "true"(ıÁˆÃûÿÿÿÿ8ªîä¨­1H§<RMAJORZBUG
+v
+java:S1659F"EDeclare "userName" and all following declarations on a separate line.(ûğ¬´ıÿÿÿÿHÆ;RMINORZ
+CODE_SMELL
+‚
+java:S1192{"GDefine a constant instead of duplicating this literal "Active" 3 times.(îÎÍƒÿÿÿÿÿ8‡¹¾«­1HÑARCRITICALZ
+CODE_SMELL
+a
+java:S1144["6Remove this unused private "sendUpdationEmail" method.(Õÿ'HÓ;RMAJORZ
+CODE_SMELL
+†
+java:S1450F"URemove the "reason" field and declare it as a local variable in the relevant methods.(ûğ¬´ıÿÿÿÿHÎ;RMINORZ
+CODE_SMELL
